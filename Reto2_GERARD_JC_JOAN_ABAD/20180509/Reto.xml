@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Game Name="XML Dungeon">
+	<Map>
+		<Tiles>
+				<Floor Height="50" Width="50" X="0.0" Y="0.0" />
+		</Tiles>
+	</Map>
+	<Creatures>
+		<Enemies>
+			<Troll CurrentHealth="10" Gold="20" X="25" Y="25" />
+		</Enemies>
+		<Character CurrentHealth="15" Gold="65" X="0" Y="0" />
+	</Creatures>
+	<Treasure>
+		<Golds>
+			<Gold Worth="190" X="23" Y="17" />
+			<Gold Worth="90" X="21" Y="17" />
+			<Gold Worth="70" X="42" Y="11" />
+			<Gold Worth="180" X="48" Y="19" />
+		</Golds>
+		<Potions>
+			<Potion Type="0" X="2" Y="4" />
+			<Potion Type="1" X="32" Y="26" />
+		</Potions>
+		<Weapons>
+			<Weapon Type="1" X="15" Y="7" />
+		</Weapons>
+	</Treasure>
+</Game>

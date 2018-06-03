@@ -143,6 +143,42 @@ void ConectDataBase::RecuperarPJ(int id, std::vector<std::string> aNames)
 
 	delete resultSet;
 
+	MostrarMapas();
+	//Juego Jugar;
+	//Jugar.Jugar();
+}
+
+void ConectDataBase::MostrarMapas()
+{
+	std::string str;
+
+	std::vector<std::string> aMapas;
+	std::string query = "SELECT `map`, `id_map` FROM `maps` WHERE 1";
+	sql::ResultSet* resultSet = stmt->executeQuery(query.c_str());
+
+	for (int i = 0; resultSet->next(); i++)
+	{
+
+		str = resultSet->getString(1).c_str();
+		std::cout << i << " - " << str << std::endl;
+		aMapas.push_back(str);
+
+	}
+	delete resultSet;
+
+	int id;
+
+	std::cout << "Introduce el numero del mapa" << std::endl;
+	std::cin >> id;
+
+	std::string queryMostrarMapa = "SELECT * FROM `maps` WHERE `map` ='" + aMapas[id - 1] + "'";
+	sql::ResultSet* resultSet = stmt->executeQuery(queryMostrarMapa.c_str());
+
+	resultSet->next();
+
+	std::string MapaElegido = resultSet->getString("map").c_str();
+	std::cout << MapaElegido << std::endl;
+
 	Juego Jugar;
 	Jugar.Jugar();
 }
@@ -255,6 +291,7 @@ void ConectDataBase::CrearUsuario()
 
 
 }
+
 void ConectDataBase::CrearPersonaje()
 {
 
@@ -294,6 +331,7 @@ void ConectDataBase::CrearPersonaje()
 		}
 	}
 }
+
  void ConectDataBase::MostrarRazas()
 {
 	std::string str;

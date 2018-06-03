@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-#define HOST "tcp://192.168.123.7:3306"
+#define HOST "tcp://192.168.1.20:3306"
 #define USER "root"
 #define PASSWORD "enti"
 struct Personaje
@@ -29,6 +29,7 @@ public:
 	void CrearPersonaje();
 	void MostrarRazas();
 	void Menu();
+	void MostrarMapas();
 	void MostrarPJ();
 	void MostrarNombreRaza(int idraza);
 	void MostrarCaracteristica(int idraza);

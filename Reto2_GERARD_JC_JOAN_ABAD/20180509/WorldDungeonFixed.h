@@ -3,21 +3,17 @@
 #include "Global.h"
 #include <string>
 #include <vector>
-
+#include <map>
 class WorldDungeonFixed
 {
 private:
 
-	Punto posicionInicial;
-	Enemigo aEnimigos[MAX_ITEMS];
-	Obstaculo aObstaculos[MAX_ITEMS];
-	Objeto aObjetos[MAX_ITEMS];
-	Tesoro tesoro[MAX_ITEMS];
+	std::map<int, Sala> mapa;
+	
 
 public:
 
-	int numCeldasX = 960;
-	int numCeldasY = 960;
+
 	bool objetoCogido = false;
 	WorldDungeonFixed();
 	~WorldDungeonFixed();

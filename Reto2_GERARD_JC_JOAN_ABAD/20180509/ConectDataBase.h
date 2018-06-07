@@ -47,6 +47,7 @@ private:
 	std::string email;
 	std::string characterName;
 	std::string user_id_string;
+	
 
 	Personaje Character;
 

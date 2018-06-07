@@ -5,8 +5,6 @@
 #include <iostream>
 
 typedef const pugi::char_t* pugiCharArray;
-Mapa mapa;
-
 
 WorldDungeonFixed::WorldDungeonFixed()
 {
@@ -23,79 +21,70 @@ void WorldDungeonFixed::LoadMap(std::string _path)
 {
 
 
-	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file("simple2.xml");
+	pugi::xml_document str;
+	pugi::xml_parse_result result = str.load_string(XmlMapa);
 
-	pugi::xml_node nodoMapeade = doc.child("mapa");
-
-	pugi::xml_node nodoMapa = nodoMapeade.child("numCeldas");
-
-	for (pugi::xml_node nodoCoordenadas = nodoMapa.child("celda"); nodoCoordenadas; nodoCoordenadas = nodoCoordenadas.next_sibling("celda"))
+	pugi::xml_node NodoDungeon = str.child("Dungeon");
+	for (pugi::xml_node sala = NodoDungeon.child("sala");
+		sala;
+		sala = sala.next_sibling("sala"))
 	{
-		pugiCharArray pugiX = nodoCoordenadas.attribute("x").value();
-		pugiCharArray pugiY = nodoCoordenadas.attribute("y").value();
+		pugiCharArray id = sala.attribute("id").value;
+		pugiCharArray celdas_x = sala.attribute("celdas_h").value();
+		pugiCharArray celdas_y = sala.attribute("celda_v").value();
+		pugiCharArray ini_x = sala.attribute("pos_ini_h").value();
+		pugiCharArray ini_y = sala.attribute("pos_ini_v").value();
 
-		mapa.celdasX = stoi(std::string(pugiX));
-		mapa.celdasY = stoi(std::string(pugiY));
-
-	}
-
-	pugi::xml_node nodoTesoros = doc.child("tesoro");
-
-	for (pugi::xml_node nodoTesoro = nodoTesoros.child("obstaculo"); nodoTesoros; nodoTesoros = nodoTesoros.next_sibling("oro"))
-	{
-		pugiCharArray pugiCantidad = nodoTesoro.attribute("tipo").value();
-		pugiCharArray pugiX = nodoTesoro.attribute("x").value();
-		pugiCharArray pugiY = nodoTesoro.attribute("y").value();
-
-
-		Tesoro tesoro;
-		tesoro.numMonedas = stoi(std::string(pugiCantidad));
-		tesoro.x = stoi(std::string(pugiX));
-		tesoro.y = stoi(std::string(pugiY));
+		Sala s;
+		s.numCeldasX = stoi(std::string(celdas_x));
+		s.numCeldasY = stoi(std::string(celdas_y));
+		s.posicionInicial.x = stoi(std::string(ini_x));
+		s.posicionInicial.y = stoi(std::string(ini_y));
 		
+		pugi::xml_node PJ = sala.child("personaje");
+		pugiCharArray PJname = PJ.attribute("name").value();
+		pugiCharArray PJx= PJ.attribute("x").value();
+		pugiCharArray PJy= PJ.attribute("y").value();
+
+		s.aPersonaje.name = PJname;
+		s.aPersonaje.posicion.x = stoi(std::string(PJx));
+		s.aPersonaje.posicion.y = stoi(std::string(PJx));
+
+		std::cout << s.aPersonaje.name << "Empieza la partida"<<std::endl;
+		
+		pugi::xml_node obstaculos = sala.child("obstculos");
+
+		int ind = 0;
+		for (pugi::xml_node obstaculo = obstaculos.child("obstaculo");
+			obstaculo;
+			obstaculo = obstaculo.next_sibling("obstaculos"))
+		{
+			pugiCharArray Pos_x = obstaculo.attribute("pos_h").value();
+			pugiCharArray Pos_y = obstaculo.attribute("pos_v").value();
+			pugiCharArray tipo = obstaculo.attribute("tipo").value();
+
+			s.aObstaculos[ind].posicion.x = stoi(std::string(Pos_x));
+			s.aObjetos[ind].posicion.y = stoi(std::string(Pos_y));
+			s.aObjetos[ind].tipo = tipo;
+
+
+			ind++;	
+		}
+		ind = 0;
+
+		pugi::xml_node enemigos = sala.child("enemigos");
+		for (pugi::xml_node enemigo = enemigos.child("enemigo");
+			enemigo;
+			enemigo = enemigo.next_sibling("enemigo"))
+		{
+			
+		}
+		
+		mapa[stoi(std::string(id))] = s;
 	}
+
 	
-	//OBSTACULOS
 
-	pugi::xml_node nodoSala = doc.child("obstaculos");
-
-	for (pugi::xml_node nodoObstaculo = doc.child("obstaculo"); nodoObstaculo; nodoObstaculo = nodoObstaculo.next_sibling("obstaculo"))
-	{
-		pugiCharArray pugiTipo = nodoObstaculo.attribute("tipo").value();
-		pugiCharArray pugiX = nodoObstaculo.attribute("x").value();
-		pugiCharArray pugiY = nodoObstaculo.attribute("y").value();
-
-		Enemigo enemigo;
-		enemigo.tipo = stoi(std::string(pugiTipo));
-		enemigo.x = stoi(std::string(pugiX));
-		enemigo.y = stoi(std::string(pugiY));
-
-
-	}
-
-	//ENEMIGO
-
-	pugi::xml_node nodoEnemigos = doc.child("enemigos");
-
-	for (pugi::xml_node nodoEnemigo = nodoEnemigos.child("enemigo"); nodoEnemigo; nodoEnemigo = nodoEnemigo.next_sibling("enemigo"))
-	{
-		pugiCharArray pugiTipo = nodoEnemigo.attribute("tipo").value();
-		pugiCharArray pugiDaño = nodoEnemigo.attribute("daño").value();
-		pugiCharArray pugiDefensa = nodoEnemigo.attribute("defensa").value();
-		pugiCharArray pugiX = nodoEnemigo.attribute("x").value();
-		pugiCharArray pugiY = nodoEnemigo.attribute("y").value();
-
-		Enemigo enemigo;
-		enemigo.tipo = stoi(std::string(pugiTipo));
-		enemigo.daño = stoi(std::string(pugiDaño));
-		enemigo.defensa = stoi(std::string(pugiDefensa));
-		enemigo.x = stoi(std::string(pugiX));
-		enemigo.y = stoi(std::string(pugiY));
-	    
-	}
-
-	//Tesoros
 }
 
 void WorldDungeonFixed::Draw(sf::RenderWindow &window)

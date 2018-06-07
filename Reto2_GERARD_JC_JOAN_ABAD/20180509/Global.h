@@ -8,30 +8,22 @@ struct Punto
 	int y;
 };
 
-struct Mapa
+struct Player
 {
-	int celdasX = 960;
-	int celdasY = 960;
+	std::string name;
+	Punto posicion;
 };
 
 struct Enemigo
 {
 	Punto posicion;
 	std::string tipo;
-	int daño;
-	int defensa;
-	int x;
-	int y;
 };
 
 struct Obstaculo
 {
 	Punto posicion;
 	std::string tipo;
-	std::string x;
-	std::string y;
-	int cantidadObstaculos;
-
 };
 
 struct Objeto
@@ -44,6 +36,22 @@ struct Tesoro
 {
 	Punto posicion;
 	int numMonedas;
-	int x;
-	int y;
+};
+
+struct Puerta
+{
+	Punto posicion;
+};
+struct Sala
+{
+	int numCeldasX;
+	int numCeldasY;
+
+	
+	Punto posicionInicial;	
+	Player aPersonaje;
+	Enemigo aEnimigos[MAX_ITEMS];
+	Obstaculo aObstaculos[MAX_ITEMS];
+	Objeto aObjetos[MAX_ITEMS];
+	Tesoro tesoro[MAX_ITEMS];
 };

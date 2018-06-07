@@ -1,0 +1,5 @@
+﻿  WorldDungeonFixed.cpp
+c:\users\joan.abad\downloads\retouf3-master\retouf3-master\reto2_gerard_jc_joan_abad\20180509\worlddungeonfixed.cpp(147): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\joan.abad\downloads\retouf3-master\retouf3-master\reto2_gerard_jc_joan_abad\20180509\worlddungeonfixed.cpp(164): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  20180509.vcxproj -> C:\Users\joan.abad\Downloads\RetoUF3-master\RetoUF3-master\Reto2_GERARD_JC_JOAN_ABAD\x64\Debug\20180509.exe
+  20180509.vcxproj -> C:\Users\joan.abad\Downloads\RetoUF3-master\RetoUF3-master\Reto2_GERARD_JC_JOAN_ABAD\x64\Debug\20180509.pdb (Partial PDB)

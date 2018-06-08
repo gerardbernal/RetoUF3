@@ -29,7 +29,6 @@ public:
 	void CrearPersonaje();
 	void MostrarRazas();
 	void Menu();
-	void MostrarMapas();
 	void MostrarPJ();
 	void MostrarNombreRaza(int idraza);
 	void MostrarCaracteristica(int idraza);
@@ -48,7 +47,6 @@ private:
 	std::string email;
 	std::string characterName;
 	std::string user_id_string;
-	std::string xmlMapa;
 
 	Personaje Character;
 

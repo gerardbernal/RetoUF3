@@ -3,9 +3,11 @@
 #include "Global.h"
 #include <string>
 #include <iostream>
+#include "Juego.h"
 
 typedef const pugi::char_t* pugiCharArray;
 Mapa mapa;
+
 
 
 WorldDungeonFixed::WorldDungeonFixed()
@@ -19,20 +21,17 @@ WorldDungeonFixed::~WorldDungeonFixed()
 {
 }
 
-
-void WorldDungeonFixed::LoadMap(std::string _path)
+void WorldDungeonFixed::LoadMap(pugi::char_t *_path)
 {
-
-
+	*_path = 'Hola';
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file("simple2.xml");
+	pugi::xml_parse_result result = doc.load_string(_path);
 
 	pugi::xml_node nodoMapeade = doc.child("mapa");
 
-	for (pugi::xml_node nodoMapas = nodoMapeade.child("numCeldas"); nodoMapas; nodoMapas = nodoMapas.next_sibling("numCeldas"))
+	pugi::xml_node nodoMapa = nodoMapeade.child("numCeldas");
 
-
-	for (pugi::xml_node nodoCoordenadas = nodoMapas.child("celda"); nodoCoordenadas; nodoCoordenadas = nodoCoordenadas.next_sibling("celda"))
+	for (pugi::xml_node nodoCoordenadas = nodoMapa.child("celda"); nodoCoordenadas; nodoCoordenadas = nodoCoordenadas.next_sibling("celda"))
 	{
 		pugiCharArray pugiX = nodoCoordenadas.attribute("x").value();
 		pugiCharArray pugiY = nodoCoordenadas.attribute("y").value();
@@ -183,17 +182,17 @@ void WorldDungeonFixed::ShowInput(sf::RenderWindow &window, sf::RectangleShape &
 
 	while (window.pollEvent(event))
 	{
-
-
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
 			std::cout << "TeclaPresionada-> LEFT" << std::endl;
 			rectangle.move(sf::Vector2f(-32, 0));
+			posicionJugadorX -= 32;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
 			std::cout << "TeclaPresionada-> Right" << std::endl;
 			rectangle.move(sf::Vector2f(32, 0));
+			posicionJugadorX += 32;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 			std::cout << "TeclaPresionada-> Up" << std::endl;
@@ -203,6 +202,7 @@ void WorldDungeonFixed::ShowInput(sf::RenderWindow &window, sf::RectangleShape &
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 			std::cout << "TeclaPresionada-> Down" << std::endl;
 			rectangle.move(sf::Vector2f(0, 32));
+			posicionJugadorY += 32;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
 			std::cout << "TeclaPresionada-> R" << std::endl;
@@ -233,7 +233,50 @@ void WorldDungeonFixed::ShowInput(sf::RenderWindow &window, sf::RectangleShape &
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 			window.close();
 		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
+		{
+			std::cout << "PosicionX = " << posicionJugadorX << "." << std::endl;
+			std::cout << "PosicionY = " << posicionJugadorY << "." << std::endl;
+		}
+		
+	}
 
 
+	ComprovarPosicionJugador(posicionJugadorX, posicionJugadorY);
+}
+
+void WorldDungeonFixed::Jugar()
+{
+
+	LoadMap("simple2.xml");
+	sf::RenderWindow window(sf::VideoMode(numCeldasX, numCeldasY), "SFML works!");
+	sf::RectangleShape personaje;
+	personaje.setSize(sf::Vector2f(32, 32));
+	personaje.setPosition(sf::Vector2f(posicionJugadorX, posicionJugadorY));
+	personaje.setFillColor(sf::Color::Green);
+	
+	while (window.isOpen())
+	{
+
+		ShowInput(window, personaje);
+		window.clear();
+		Draw(window);
+		window.draw(personaje);
+		window.display();
 	}
 }
+
+void WorldDungeonFixed::ComprovarPosicionJugador(int &posicionJugadorX, int &posicionJugadorY)
+{	
+	if (posicionJugadorX == posicionPuertaX && posicionJugadorY == posicionPuertaY)
+	{
+
+		posicionJugadorX = 321;
+		posicionJugadorY = 321;
+		//LoadMap(contingut de XML);
+	}
+	
+}
+
+
+

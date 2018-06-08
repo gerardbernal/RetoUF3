@@ -3,6 +3,7 @@
 #include "Global.h"
 #include <string>
 #include <vector>
+#include "Juego.h"
 
 class WorldDungeonFixed
 {
@@ -13,18 +14,22 @@ private:
 	Obstaculo aObstaculos[MAX_ITEMS];
 	Objeto aObjetos[MAX_ITEMS];
 	Tesoro tesoro[MAX_ITEMS];
-
 public:
 
 	int numCeldasX = 960;
 	int numCeldasY = 960;
+	int posicionJugadorX = 321;
+	int posicionJugadorY = 321;
+	int posicionPuertaX;
+	int posicionPuertaY;
 	bool objetoCogido = false;
 	WorldDungeonFixed();
 	~WorldDungeonFixed();
-	void LoadMap(std::string _path);
+	void Jugar();
+	void LoadMap(pugi::char_t *_path);
 	void Draw(sf::RenderWindow &window);
 	void ShowInput(sf::RenderWindow &window, sf::RectangleShape &rectangle);
-	void Colisiones();
+	void ComprovarPosicionJugador(int &posicionPuertaX, int &posicionPuertaY);
 	int Oro = 2;
 	std::vector<std::string> Inventario;
 	std::string sword = "sword";

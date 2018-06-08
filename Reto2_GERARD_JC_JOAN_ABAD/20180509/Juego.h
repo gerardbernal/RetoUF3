@@ -7,9 +7,12 @@
 
 class Juego
 {
+private: 
+	
 public:
 	Juego();
 	~Juego();
-	void Jugar();
+
+	
 };
 

@@ -9,8 +9,7 @@
 int main()
 {
 	ConectDataBase db;
-	//db.Menu();
-	db.MostrarMapas();
+	db.Menu();
 	system("PAUSE");
 
 	return 0;

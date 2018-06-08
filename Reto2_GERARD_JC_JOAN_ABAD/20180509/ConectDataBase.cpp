@@ -143,50 +143,8 @@ void ConectDataBase::RecuperarPJ(int id, std::vector<std::string> aNames)
 
 	delete resultSet;
 
-	MostrarMapas();
-	//Juego Jugar;
-	//Jugar.Jugar();
-}
-
-void ConectDataBase::MostrarMapas()
-{
-	std::string str;
-	int mapaid;
-
-	std::vector<std::string> aMapas;
-	std::string query = "SELECT * FROM `maps` WHERE 1";
-	sql::ResultSet* resultSet = stmt->executeQuery(query.c_str());
-	for (int i = 0; resultSet->next(); i++)
-	{
-		mapaid = resultSet->getInt("id_map");
-		str = resultSet->getString(2).c_str();
-		std::cout << mapaid << " - " << str << std::endl;
-		aMapas.push_back(str);
-
-	}
-
-
-	int id;
-
-	std::cout << "Introduce el numero del mapa" << std::endl;
-	std::cin >> id;
-	//std::to_string(id);
-	std::string queryMostrarMapa = "SELECT mapfile FROM `maps` WHERE `id_map` =" + std::to_string (id);
-	sql::ResultSet* resultMap = stmt->executeQuery(queryMostrarMapa.c_str());
-
-	resultMap->next();
-	str = resultMap->getString(1).c_str();
-
-	//std::string MapaElegido = resultSet->getString("map").c_str();
-	
-	std::cout << str << std::endl;
-
-	xmlMapa = str;
-
-	delete resultSet;
-	delete resultMap;
-	Juego Jugar;
-	Jugar.Jugar();
+	WorldDungeonFixed wdf;
+	wdf.Jugar();
 }
 
 void ConectDataBase::Login()
@@ -297,7 +255,6 @@ void ConectDataBase::CrearUsuario()
 
 
 }
-
 void ConectDataBase::CrearPersonaje()
 {
 
@@ -337,7 +294,6 @@ void ConectDataBase::CrearPersonaje()
 		}
 	}
 }
-
  void ConectDataBase::MostrarRazas()
 {
 	std::string str;

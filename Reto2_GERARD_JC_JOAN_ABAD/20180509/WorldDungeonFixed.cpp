@@ -29,9 +29,10 @@ void WorldDungeonFixed::LoadMap(std::string _path)
 
 	pugi::xml_node nodoMapeade = doc.child("mapa");
 
-	pugi::xml_node nodoMapa = nodoMapeade.child("numCeldas");
+	for (pugi::xml_node nodoMapas = nodoMapeade.child("numCeldas"); nodoMapas; nodoMapas = nodoMapas.next_sibling("numCeldas"))
 
-	for (pugi::xml_node nodoCoordenadas = nodoMapa.child("celda"); nodoCoordenadas; nodoCoordenadas = nodoCoordenadas.next_sibling("celda"))
+
+	for (pugi::xml_node nodoCoordenadas = nodoMapas.child("celda"); nodoCoordenadas; nodoCoordenadas = nodoCoordenadas.next_sibling("celda"))
 	{
 		pugiCharArray pugiX = nodoCoordenadas.attribute("x").value();
 		pugiCharArray pugiY = nodoCoordenadas.attribute("y").value();

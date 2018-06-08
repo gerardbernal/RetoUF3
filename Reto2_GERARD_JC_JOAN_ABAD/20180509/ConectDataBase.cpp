@@ -151,34 +151,40 @@ void ConectDataBase::RecuperarPJ(int id, std::vector<std::string> aNames)
 void ConectDataBase::MostrarMapas()
 {
 	std::string str;
+	int mapaid;
 
 	std::vector<std::string> aMapas;
-	std::string query = "SELECT `map`, `id_map` FROM `maps` WHERE 1";
+	std::string query = "SELECT * FROM `maps` WHERE 1";
 	sql::ResultSet* resultSet = stmt->executeQuery(query.c_str());
-
 	for (int i = 0; resultSet->next(); i++)
 	{
-
-		str = resultSet->getString(1).c_str();
-		std::cout << i << " - " << str << std::endl;
+		mapaid = resultSet->getInt("id_map");
+		str = resultSet->getString(2).c_str();
+		std::cout << mapaid << " - " << str << std::endl;
 		aMapas.push_back(str);
 
 	}
-	delete resultSet;
+
 
 	int id;
 
 	std::cout << "Introduce el numero del mapa" << std::endl;
 	std::cin >> id;
+	//std::to_string(id);
+	std::string queryMostrarMapa = "SELECT mapfile FROM `maps` WHERE `id_map` =" + std::to_string (id);
+	sql::ResultSet* resultMap = stmt->executeQuery(queryMostrarMapa.c_str());
 
-	std::string queryMostrarMapa = "SELECT * FROM `maps` WHERE `map` ='" + aMapas[id - 1] + "'";
-	sql::ResultSet* resultSet = stmt->executeQuery(queryMostrarMapa.c_str());
+	resultMap->next();
+	str = resultMap->getString(1).c_str();
 
-	resultSet->next();
+	//std::string MapaElegido = resultSet->getString("map").c_str();
+	
+	std::cout << str << std::endl;
 
-	std::string MapaElegido = resultSet->getString("map").c_str();
-	std::cout << MapaElegido << std::endl;
+	xmlMapa = str;
 
+	delete resultSet;
+	delete resultMap;
 	Juego Jugar;
 	Jugar.Jugar();
 }

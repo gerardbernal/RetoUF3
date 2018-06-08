@@ -1,18 +1,41 @@
 ﻿  ConectDataBase.cpp
-h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\deps64\mysql\include\cppconn\sqlstring.h(39): warning C4251: 'sql::SQLString::realStr': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'sql::SQLString'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\cppconn\sqlstring.h(39): warning C4251: 'sql::SQLString::realStr': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'sql::SQLString'
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(4273): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\deps64\mysql\include\cppconn\exception.h(61): warning C4251: 'sql::SQLException::sql_state': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'sql::SQLException'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\cppconn\exception.h(61): warning C4251: 'sql::SQLException::sql_state': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'sql::SQLException'
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(4273): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\deps64\mysql\include\cppconn\exception.h(145): warning C4251: 'sql::SQLUnsupportedOptionException::option': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of struct 'sql::SQLUnsupportedOptionException'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\cppconn\exception.h(145): warning C4251: 'sql::SQLUnsupportedOptionException::option': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of struct 'sql::SQLUnsupportedOptionException'
   c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(4273): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
   Unknown compiler version - please run the configure tests and report the results
-h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\deps64\mysql\include\mysql_connection.h(175): warning C4251: 'sql::mysql::MySQL_Connection::proxy': class 'boost::shared_ptr<sql::mysql::NativeAPI::NativeConnectionWrapper>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Connection'
-  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\deps64\mysql\include\mysql_connection.h(175): note: see declaration of 'boost::shared_ptr<sql::mysql::NativeAPI::NativeConnectionWrapper>'
-h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\deps64\mysql\include\mysql_connection.h(179): warning C4251: 'sql::mysql::MySQL_Connection::service': class 'boost::scoped_ptr<sql::mysql::MySQL_Statement>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Connection'
-  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\deps64\mysql\include\mysql_connection.h(179): note: see declaration of 'boost::scoped_ptr<sql::mysql::MySQL_Statement>'
-h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\deps64\mysql\include\mysql_connection.h(181): warning C4251: 'sql::mysql::MySQL_Connection::intern': class 'boost::scoped_ptr<sql::mysql::MySQL_ConnectionData>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Connection'
-  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\deps64\mysql\include\mysql_connection.h(181): note: see declaration of 'boost::scoped_ptr<sql::mysql::MySQL_ConnectionData>'
-h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\deps64\mysql\include\mysql_driver.h(50): warning C4251: 'sql::mysql::MySQL_Driver::proxy': class 'boost::scoped_ptr<sql::mysql::NativeAPI::NativeDriverWrapper>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Driver'
-  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\deps64\mysql\include\mysql_driver.h(50): note: see declaration of 'boost::scoped_ptr<sql::mysql::NativeAPI::NativeDriverWrapper>'
-h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad\20180509\conectdatabase.cpp(58): warning C4102: 'std': unreferenced label
-  20180509.vcxproj -> H:\Enti\M06-\UF3\Reto2_GERARD_JC_JOAN_ABAD\x64\Debug\20180509.exe
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(175): warning C4251: 'sql::mysql::MySQL_Connection::proxy': class 'boost::shared_ptr<sql::mysql::NativeAPI::NativeConnectionWrapper>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Connection'
+  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(175): note: see declaration of 'boost::shared_ptr<sql::mysql::NativeAPI::NativeConnectionWrapper>'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(179): warning C4251: 'sql::mysql::MySQL_Connection::service': class 'boost::scoped_ptr<sql::mysql::MySQL_Statement>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Connection'
+  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(179): note: see declaration of 'boost::scoped_ptr<sql::mysql::MySQL_Statement>'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(181): warning C4251: 'sql::mysql::MySQL_Connection::intern': class 'boost::scoped_ptr<sql::mysql::MySQL_ConnectionData>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Connection'
+  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(181): note: see declaration of 'boost::scoped_ptr<sql::mysql::MySQL_ConnectionData>'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_driver.h(50): warning C4251: 'sql::mysql::MySQL_Driver::proxy': class 'boost::scoped_ptr<sql::mysql::NativeAPI::NativeDriverWrapper>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Driver'
+  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_driver.h(50): note: see declaration of 'boost::scoped_ptr<sql::mysql::NativeAPI::NativeDriverWrapper>'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\20180509\conectdatabase.cpp(58): warning C4102: 'std': unreferenced label
+  Juego.cpp
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\20180509\juego.cpp(18): warning C4101: 'tesoro': unreferenced local variable
+  pugixml.cpp
+  Source.cpp
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\cppconn\sqlstring.h(39): warning C4251: 'sql::SQLString::realStr': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'sql::SQLString'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(4273): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\cppconn\exception.h(61): warning C4251: 'sql::SQLException::sql_state': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'sql::SQLException'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(4273): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\cppconn\exception.h(145): warning C4251: 'sql::SQLUnsupportedOptionException::option': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of struct 'sql::SQLUnsupportedOptionException'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.13.26128\include\xstring(4273): note: see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  Unknown compiler version - please run the configure tests and report the results
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(175): warning C4251: 'sql::mysql::MySQL_Connection::proxy': class 'boost::shared_ptr<sql::mysql::NativeAPI::NativeConnectionWrapper>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Connection'
+  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(175): note: see declaration of 'boost::shared_ptr<sql::mysql::NativeAPI::NativeConnectionWrapper>'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(179): warning C4251: 'sql::mysql::MySQL_Connection::service': class 'boost::scoped_ptr<sql::mysql::MySQL_Statement>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Connection'
+  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(179): note: see declaration of 'boost::scoped_ptr<sql::mysql::MySQL_Statement>'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(181): warning C4251: 'sql::mysql::MySQL_Connection::intern': class 'boost::scoped_ptr<sql::mysql::MySQL_ConnectionData>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Connection'
+  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_connection.h(181): note: see declaration of 'boost::scoped_ptr<sql::mysql::MySQL_ConnectionData>'
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_driver.h(50): warning C4251: 'sql::mysql::MySQL_Driver::proxy': class 'boost::scoped_ptr<sql::mysql::NativeAPI::NativeDriverWrapper>' needs to have dll-interface to be used by clients of class 'sql::mysql::MySQL_Driver'
+  h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\deps64\mysql\include\mysql_driver.h(50): note: see declaration of 'boost::scoped_ptr<sql::mysql::NativeAPI::NativeDriverWrapper>'
+  WorldDungeonFixed.cpp
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\20180509\worlddungeonfixed.cpp(149): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+h:\enti\m06-\uf3\reto2_gerard_jc_joan_abad - copy\20180509\worlddungeonfixed.cpp(166): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  20180509.vcxproj -> H:\Enti\M06-\UF3\Reto2_GERARD_JC_JOAN_ABAD - Copy\x64\Debug\20180509.exe

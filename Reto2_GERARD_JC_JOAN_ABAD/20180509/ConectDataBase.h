@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 
-#define HOST "tcp://192.168.1.20:3306"
+#define HOST "tcp://192.168.123.7:3306"
 #define USER "root"
 #define PASSWORD "enti"
 struct Personaje
@@ -48,6 +48,7 @@ private:
 	std::string email;
 	std::string characterName;
 	std::string user_id_string;
+	std::string xmlMapa;
 
 	Personaje Character;
 

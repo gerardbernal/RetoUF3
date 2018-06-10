@@ -46,14 +46,13 @@ private:
 	std::string password2;
 	std::string email;
 	std::string characterName;
-	std::string user_id_string;
-	
+	std::string user_id_string;	
 
 	Personaje Character;
 
 	int idRace;
 	int character_id;
-	int user_id; 
+	int user_id;
 	bool logueado;
 	bool cuentaCreada = false;
 

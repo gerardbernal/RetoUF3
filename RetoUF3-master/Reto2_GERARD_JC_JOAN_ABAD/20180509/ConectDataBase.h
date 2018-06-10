@@ -8,9 +8,9 @@
 #include <string>
 #include <vector>
 
-#define HOST "tcp://192.168.123.7:3306"
+#define HOST "localhost:3306"
 #define USER "root"
-#define PASSWORD "enti"
+#define PASSWORD ""
 struct Personaje
 {
 	std::string nameRace;
@@ -33,7 +33,9 @@ public:
 	void MostrarNombreRaza(int idraza);
 	void MostrarCaracteristica(int idraza);
 	void RecuperarPJ(int id, std::vector<std::string> aNames);
-	void MostrarMapas();
+	std::string MostrarMapas();
+	std::string xmlMapa;
+	std::string hola;
 
 	
 private:
@@ -49,8 +51,6 @@ private:
 	std::string email;
 	std::string characterName;
 	std::string user_id_string;
-	std::string xmlMapa;
-
 	Personaje Character;
 
 	int idRace;

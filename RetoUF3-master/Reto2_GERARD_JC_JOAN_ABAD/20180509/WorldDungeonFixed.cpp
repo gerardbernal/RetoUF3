@@ -6,7 +6,6 @@
 #include "Juego.h"
 
 typedef const pugi::char_t* pugiCharArray;
-Mapa mapa;
 
 
 
@@ -21,25 +20,24 @@ WorldDungeonFixed::~WorldDungeonFixed()
 {
 }
 
-void WorldDungeonFixed::LoadMap()
+void WorldDungeonFixed::LoadMap(std::string &maps)
 {
-
-
 	pugi::xml_document str;
-	pugi::xml_parse_result result = str.load_string(XmlMapa);
+
+	pugi::xml_parse_result result = str.load_string(maps.c_str());
 
 	pugi::xml_node NodoDungeon = str.child("Dungeon");
-	for (pugi::xml_node sala = NodoDungeon.child("sala");
-		sala;
-		sala = sala.next_sibling("sala"))
+	for (pugi::xml_node sala = NodoDungeon.child("sala");sala;sala = sala.next_sibling("sala"))
 	{
-		pugiCharArray id = sala.attribute("id").value;
+		 
+		Sala s;
+
+		pugiCharArray id = sala.attribute("id").value();
 		pugiCharArray celdas_x = sala.attribute("celdas_h").value();
 		pugiCharArray celdas_y = sala.attribute("celda_v").value();
 		pugiCharArray ini_x = sala.attribute("pos_ini_h").value();
 		pugiCharArray ini_y = sala.attribute("pos_ini_v").value();
 
-		Sala s;
 		s.numCeldasX = stoi(std::string(celdas_x));
 		s.numCeldasY = stoi(std::string(celdas_y));
 		s.posicionInicial.x = stoi(std::string(ini_x));
@@ -105,6 +103,8 @@ void WorldDungeonFixed::LoadMap()
 			s.aObjetos[ind].posicion.x = stoi(std::string(Pos_x));
 			s.aObjetos[ind].posicion.y = stoi(std::string(Pos_y));
 			s.aObjetos[ind].tipo = tipo;
+
+			
 
 			ind++;
 		}
@@ -195,9 +195,8 @@ void WorldDungeonFixed::Draw(sf::RenderWindow &window)
 	altar.setTexture(&textureAltar);
 
 
-	baul.setPosition(sf::Vector2f(tesoro->x, tesoro->y));
-	altar.setPosition(sf::Vector2f(641, 641));
-	flecha.setPosition(sf::Vector2f(720, 720));
+	baul.setPosition(sf::Vector2f(mapa[numeroSala].tesoro->posicion.x, mapa[numeroSala].tesoro->posicion.y));
+	
 
 	if (!textureSuelo.loadFromFile("Assets/Suelo.png", sf::IntRect(0, 0, 32, 32)))
 	{
@@ -208,9 +207,9 @@ void WorldDungeonFixed::Draw(sf::RenderWindow &window)
 		std::cout << "Error al cargar la imagen" << std::endl;
 	}	
 	
-	for (int i = 0; i <= mapa.celdasX; i+=32)
+	for (int i = 0; i <= mapa[numeroSala].numCeldasX; i+=32)
 	{
-			for (int j = 0; j <= mapa.celdasY; j +=32)
+			for (int j = 0; j <= mapa[numeroSala].numCeldasY; j +=32)
 			{
 				suelo.setPosition(sf::Vector2f(i , j));
 				window.draw(suelo);
@@ -236,13 +235,13 @@ void WorldDungeonFixed::ShowInput(sf::RenderWindow &window, sf::RectangleShape &
 		{
 			std::cout << "TeclaPresionada-> LEFT" << std::endl;
 			rectangle.move(sf::Vector2f(-32, 0));
-			posicionJugadorX -= 32;
+			mapa[1].aPersonaje.posicion.x+=32;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
 			std::cout << "TeclaPresionada-> Right" << std::endl;
 			rectangle.move(sf::Vector2f(32, 0));
-			posicionJugadorX += 32;
+			mapa[1].aPersonaje.posicion.x += 32;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 			std::cout << "TeclaPresionada-> Up" << std::endl;
@@ -252,7 +251,7 @@ void WorldDungeonFixed::ShowInput(sf::RenderWindow &window, sf::RectangleShape &
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 			std::cout << "TeclaPresionada-> Down" << std::endl;
 			rectangle.move(sf::Vector2f(0, 32));
-			posicionJugadorY += 32;
+			mapa[1].aPersonaje.posicion.y += 32;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
 			std::cout << "TeclaPresionada-> R" << std::endl;
@@ -269,12 +268,14 @@ void WorldDungeonFixed::ShowInput(sf::RenderWindow &window, sf::RectangleShape &
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::I))
 		{
-			std::cout << "Oro: " << Oro << std::endl;
+			/*std::cout << "Oro: " << Oro << std::endl;
 			std::cout << "Inventario: " << std::endl;
-			Inventario.push_back(sword);
-
-			std::cout << "Tienes " << Inventario.size() << " espadas!";
-
+			std::cout << "Tienes " << Inventario.size() << " espadas!";*/
+			std::cout << mapa[1].aPersonaje.posicion.x << std::endl;
+			std::cout << mapa[1].aPersonaje.posicion.y << std::endl;
+			std::cout << mapa[0].numCeldasX << std::endl;
+			std::cout << mapa[0].numCeldasY << std::endl;
+			
 			//std::cout << Inventario.size();
 
 			
@@ -292,22 +293,25 @@ void WorldDungeonFixed::ShowInput(sf::RenderWindow &window, sf::RectangleShape &
 	}
 
 
-	ComprovarPosicionJugador(posicionJugadorX, posicionJugadorY);
+	ComprovarPosicionJugador();
 }
 
 void WorldDungeonFixed::Jugar()
 {
 
-	LoadMap("simple2.xml");
-	sf::RenderWindow window(sf::VideoMode(numCeldasX, numCeldasY), "SFML works!");
+	std::string map = db.MostrarMapas();
+	sf::RenderWindow window(sf::VideoMode(960,960), "SFML works!");
 	sf::RectangleShape personaje;
 	personaje.setSize(sf::Vector2f(32, 32));
-	personaje.setPosition(sf::Vector2f(posicionJugadorX, posicionJugadorY));
+	personaje.setPosition(sf::Vector2f(mapa[1].aPersonaje.posicion.x, mapa[1].aPersonaje.posicion.y));
 	personaje.setFillColor(sf::Color::Green);
+	LoadMap(map);
+
+	
 	
 	while (window.isOpen())
 	{
-
+		ComprovarPosicionJugador();
 		ShowInput(window, personaje);
 		window.clear();
 		Draw(window);
@@ -316,16 +320,22 @@ void WorldDungeonFixed::Jugar()
 	}
 }
 
-void WorldDungeonFixed::ComprovarPosicionJugador(int &posicionJugadorX, int &posicionJugadorY)
+void WorldDungeonFixed::ComprovarPosicionJugador()
 {	
-	if (posicionJugadorX == posicionPuertaX && posicionJugadorY == posicionPuertaY)
+	if (mapa[1].aPersonaje.posicion.x == mapa[1].aPuerta->posicion.x && mapa[1].aPersonaje.posicion.y == mapa[1].aPuerta->posicion.y)
 	{
-
-		posicionJugadorX = 321;
-		posicionJugadorY = 321;
-		//LoadMap(contingut de XML);
+		numeroSala = 1;
 	}
+
+	if (mapa[1].aPersonaje.posicion.x == mapa[2].aPuerta[2].posicion.x && mapa[1].aPersonaje.posicion.y == mapa[2].aPuerta->posicion.y)
+	{
+		numeroSala = 2;
+	}
+	if (mapa[1].aPersonaje.posicion.x == mapa[0].aPuerta->posicion.x && mapa[1].aPersonaje.posicion.y == mapa[0].aPuerta->posicion.y)
+	{
+		numeroSala = 0;
 	
+	}
 }
 
 

@@ -6,13 +6,13 @@
 #include "Juego.h"
 #include <map>
 #include <vector>
+#include "ConectDataBase.h"
 
 class WorldDungeonFixed
 {
 private:
 
 	std::map<int, Sala> mapa;
-
 public:
 
 	int posicionJugadorX = 321;
@@ -22,15 +22,17 @@ public:
 	bool objetoCogido = false;
 	WorldDungeonFixed();
 	~WorldDungeonFixed();
+	int numeroSala;
 	void Jugar();
-	void LoadMap(/*pugi::char_t *_path*/);
+	void LoadMap(std::string &maps);
 	void Draw(sf::RenderWindow &window);
 	void ShowInput(sf::RenderWindow &window, sf::RectangleShape &rectangle);
-	void ComprovarPosicionJugador(int &posicionPuertaX, int &posicionPuertaY);
+	void ComprovarPosicionJugador();
 	int Oro = 2;
 	std::vector<std::string> Inventario;
-	std::string sword = "sword";
-	
+	ConectDataBase db;
+	std::string mapaDef;
+
 
 
 };

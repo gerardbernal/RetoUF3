@@ -95,7 +95,7 @@ void ConectDataBase::MostrarPJ()
 	
 }
 
-void ConectDataBase::MostrarMapas()
+std::string ConectDataBase::MostrarMapas()
 {
 	std::string str;
 	int mapaid;
@@ -124,16 +124,10 @@ void ConectDataBase::MostrarMapas()
 	resultMap->next();
 	str = resultMap->getString(1).c_str();
 
-	//std::string MapaElegido = resultSet->getString("map").c_str();
-
-	std::cout << str << std::endl;
-
-	xmlMapa = str;
-
+	//std::string MapaElegido = resultSet->getString("map").c_str();	
 	delete resultSet;
 	delete resultMap;
-	WorldDungeonFixed wdf;
-	wdf.Jugar();
+	return str;
 }
 void ConectDataBase::MostrarNombreRaza(int idraza)
 {
@@ -183,7 +177,8 @@ void ConectDataBase::RecuperarPJ(int id, std::vector<std::string> aNames)
 	
 
 	delete resultSet;
-	MostrarMapas();
+	WorldDungeonFixed wf;
+	wf.Jugar();
 	
 }
 

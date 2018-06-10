@@ -53,7 +53,7 @@ private:
 
 	int idRace;
 	int character_id;
-	int user_id;
+	int user_id; 
 	bool logueado;
 	bool cuentaCreada = false;
 

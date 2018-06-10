@@ -1,0 +1,4 @@
+Hola, 
+hemos estado teniendo muchos problemas con los stoi, por alguna razón que
+desconozemos peta hagamos lo que hagamos. Ya no sabemos que hacer así que 
+igual si te miras el codigo de la funcion LoadMap() sabes que es.

@@ -143,8 +143,8 @@ void ConectDataBase::RecuperarPJ(int id, std::vector<std::string> aNames)
 
 	delete resultSet;
 
-	Juego Jugar;
-	Jugar.Jugar();
+	WorldDungeonFixed wdf;
+	wdf.Jugar();
 }
 
 void ConectDataBase::Login()

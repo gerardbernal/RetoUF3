@@ -1,0 +1,79 @@
+<Dungeon>
+   <sala id="0" celdas_h="960" celdas_v="960" pos_ini_h="0" pos_ini_v="0">
+       
+  <personaje name="Zelda" pos_h="96" pos_v="96"/>
+  
+  <obstaculos>
+    <obstaculo pos_h="640" pos_v="224" tipo="columna" />
+    <obstaculo pos_h="640" pos_v="224" tipo="barril" />    
+  </obstaculos>
+  <enemigos>
+    <enemigo pos_h="320" pos_v="320" tipo="orco"/>
+    <enemigo pos_h="160" pos_v="160" tipo="esqueleto"/>
+  </enemigos>
+  <objetos> 
+    <objeto pos_h="288" pos_v="288" tipo="espada"/>
+    <objeto pos_h="224" pos_v="224" tipo="casco"/>
+  </objetos>
+  <tesoros>
+    <tesoro pos_h="640" pos_v="640" cantidad="100"/>
+    <tesoro pos_h="320" pos_v="32" cantidad="50"/>
+  </tesoros>
+  <puertas>
+    <puerta pos_h="928" pos_v="480" id="1"/>
+    <puerta pos_h="480" pos_v="928" id="2"/>
+  </puertas>
+    </sala>  
+    
+   <sala id="1" celdas_h="960" celdas_v="960" pos_ini_h="0" pos_ini_v="0">
+  
+  <personaje name="Zelda" pos_h="864" pos_v="96"/>
+
+  <obstaculos>
+    <obstaculo pos_h="672" pos_v="384" tipo="agujero" />    
+  </obstaculos>
+  <enemigos>
+    <enemigo pos_h="320" pos_v="192" tipo="elfo"/>
+    <enemigo pos_h="160" pos_v="160" tipo="fantasma"/>
+    <enemigo pos_h="256" pos_v="896" tipo="esqueleto"/>
+  </enemigos>
+  <objetos>
+    <objeto pos_h="288" pos_v="384" tipo="armadura"/>
+    <objeto pos_h="224" pos_v="224" tipo="arco"/>
+  </objetos>
+  <tesoros>
+    <tesoro pos_h="640" pos_v="640" cantidad="150"/>
+    <tesoro pos_h="320" pos_v="32" cantidad="80"/>
+  </tesoros>
+  <puertas>
+    <puerta pos_h="0" pos_v="480" id="0"/>
+  </puertas>
+  
+    </sala>  
+    
+    
+    <sala id="2" celdas_h="960" celdas_v="960" pos_ini_h="0" pos_ini_v="0">
+  
+  <personaje name="Zelda" pos_h="96" pos_v="96"/>
+
+  <obstaculos>
+    <obstaculo pos_h="192" pos_v="384" tipo="columna" />
+    <obstaculo pos_h="288" pos_v="480" tipo="barril" />    
+  </obstaculos>
+  <enemigos>
+    <enemigo pos_h="320" pos_v="288" tipo="orco"/>
+    <enemigo pos_h="640" pos_v="192" tipo="esqueleto"/>
+  </enemigos>
+  <objetos>
+    <objeto pos_h="224" pos_v="288" tipo="espada"/>
+    <objeto pos_h="288" pos_v="224" tipo="casco"/>
+  </objetos>
+  <tesoros>
+    <tesoro pos_h="320" pos_v="640" cantidad="74"/>
+    <tesoro pos_h="320" pos_v="64" cantidad="50"/>
+  </tesoros>
+  <puertas>
+    <puerta pos_h="480" pos_v="0" id="0"/>
+  </puertas>
+    </sala>  
+</Dungeon>

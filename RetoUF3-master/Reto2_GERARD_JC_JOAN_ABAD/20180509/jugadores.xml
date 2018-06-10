@@ -1,0 +1,11 @@
+<jugadores>
+	<jugador>
+		<usuario> Adolfo </usuario>
+		<password> elfo </password>
+	</jugador>
+	<jugador>
+		<usuario> Joseph </usuario>
+		<password> ogro </password>
+	</jugador>
+ </jugadores>
+
